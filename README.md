@@ -18,3 +18,8 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+## note
+mix ecto.create 根据config的数据库描述，建立相应数据库
+mix phoenix.gen.html User users name:string 创建Controller, Models, View 等
+mix ecto.migrate 根据Models中的字段，创建数据表

@@ -9,3 +9,5 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+GoodsManage.Repo.insert!(%GoodsManage.Account{uuid: UUID.uuid3(:dns, "admin"), account: "admin", password: :crypto.md5("admin")|> Base.encode16})

@@ -1,0 +1,28 @@
+<h2>Show account</h2>
+
+<ul>
+
+  <li>
+    <strong>Uuid:</strong>
+    <%= @account.uuid %>
+  </li>
+
+  <li>
+    <strong>Account:</strong>
+    <%= @account.account %>
+  </li>
+
+  <li>
+    <strong>Is admin:</strong>
+    <%= @account.is_admin %>
+  </li>
+
+  <li>
+    <strong>Enabled:</strong>
+    <%= @account.enabled %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: account_path(@conn, :edit, @account) %>
+<%= link "Back", to: account_path(@conn, :index) %>
