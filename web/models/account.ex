@@ -17,6 +17,6 @@ defmodule GoodsManage.Account do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:uuid, :account, :password])
-    |> validate_required([:uuid, :password, :account])
+    |> validate_required([:uuid, :account, :password])
   end
 end

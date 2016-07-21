@@ -5,10 +5,7 @@ defmodule GoodsManage.OrderController do
   alias GoodsManage.ReturnView, as: Return
 
   def index(conn, _params) do
-    orders = Repo.all(Order)
     return(conn, {:index, %{}})
-    # render(conn, "index.html", orders: orders)
-
   end
 
   def new(conn, _params) do
@@ -69,13 +66,11 @@ defmodule GoodsManage.OrderController do
   defp return(conn, params) do
     case params do
       {:error, error} ->
-        Return.return(conn, "order_layout.html", "index.html", %{}, nil, error)
+        Return.return(conn, "app.html", "index.html", %{}, nil, error)
       {:info, info} ->
-        Return.return(conn, "order_layout.html", "index.html", %{}, info, nil)
+        Return.return(conn, "app.html", "index.html", %{}, info, nil)
       {:index, p} ->
-        Return.return(conn, "order_layout.html", "index.html", p, nil, nil)
-      {:session, p} ->
-        redirect conn, to: "/orders"
+        Return.return(conn, "app.html", "index.html", p, nil, nil)
     end
   end
 end

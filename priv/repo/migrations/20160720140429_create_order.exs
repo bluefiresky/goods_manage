@@ -12,7 +12,6 @@ defmodule GoodsManage.Repo.Migrations.CreateOrder do
       add :customer_demand, :string
       add :goods_name, :string
       add :receive_num, :integer
-      add :receive_address, :string
       add :receive_date, :integer
       add :install_date, :integer
       add :order_no, :string

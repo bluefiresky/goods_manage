@@ -9,27 +9,32 @@
 
     <title>Hello GoodsManage!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <script src="<%= static_path(@conn, "/js/jquery-3.1.0.min.js") %>"></script>
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
-
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+      <div  style="display:flex;flex-direction:row;margin-left:20px;margin-right:20px">
 
-    </div> <!-- /container -->
+        <div  style="border:1px solid black;flex-basis:150px">
+          <p  style="background-color:#0099FF;color:#FFFFFF">工单管理</p>
+          <a  href="/orders">导入工单</a><br />
+          <a>未按装</a><br />
+          <a>已安装</a><br /><br />
+          <p  style="background-color:#0099FF;color:#FFFFFF">安装队管理</p>
+          <a>安装对列表</a><br /><br />
+          <p  style="background-color:#0099FF;color:#FFFFFF">帐号管理</p>
+          <a>帐号信息</a><br />
+          <a>修改密码</a><br />
+        </div>
+
+        <main role="main">
+          <%= render @view_module, @view_template, assigns %>
+        </main>
+
+      </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

@@ -29,3 +29,29 @@ end
 #    </tr>
 # <% end %>
 # <%= link "New order", to: order_path(@conn, :new) %>
+
+# <table class="table">
+#   <thead>
+#     <tr>
+#       <th>Customer</th>
+#       <th>Sales department</th>
+#       <th>Customer address</th>
+#       <th>Telephone</th>
+#       <th>Phone</th>
+#       <th>Perchase date</th>
+#       <th>Customer demand</th>
+#       <th>Goods name</th>
+#       <th>Receive num</th>
+#       <th>Receive address</th>
+#       <th>Receive date</th>
+#       <th>Install date</th>
+#       <th>Order no</th>
+#       <th>Dispatching date local</th>
+#       <th>Dispatching date service</th>
+#
+#       <th></th>
+#     </tr>
+#   </thead>
+#   <tbody>
+#   </tbody>
+# </table>
