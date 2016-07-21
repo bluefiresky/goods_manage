@@ -20,4 +20,18 @@ defmodule GoodsManage.Utility do
 		end
 	end
 
+  def get_id_by_token(token) do
+    case Exredis.start_link do
+      {:ok, pid} ->
+        uuid = Exredis.query(pid, ["GET", "access." <> token])
+        if uuid != :undefined and uuid != nil do
+          {:ok, uuid}
+        else
+          {:ok, nil}
+        end
+      _ ->
+        {:error, "can not link redis"}
+    end
+  end
+
 end

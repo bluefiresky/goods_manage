@@ -1,8 +1,6 @@
 defmodule GoodsManage.PageController do
   use GoodsManage.Web, :controller
-  import Ecto.Query
 
-  alias GoodsManage.ErrorView, as: Error
   alias GoodsManage.ReturnView, as: Return
   alias GoodsManage.Account
   alias GoodsManage.Utility
@@ -12,10 +10,11 @@ defmodule GoodsManage.PageController do
   end
 
   def session(conn, %{"account" => a, "password" => p}) do
-    account = Repo.get_by(Account, %{account: a, password: :crypto.md5(p)|> Base.encode16})
+    account = Account.get_by_account_password(a, p)
     if account != nil do
       case Utility.generate_token(account.uuid) do
         {:ok, token} ->
+          conn = put_session(conn, :token, token[:access_token])
           return(conn, {:session, token[:access_token]})
         {:error, err} ->
           return(conn, {:error, "服务器内部错误"})

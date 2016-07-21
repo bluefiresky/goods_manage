@@ -1,5 +1,9 @@
 defmodule GoodsManage.CheckoutToken do
   import Plug.Conn
+
+  alias GoodsManage.Utility
+  alias GoodsManage.Account
+
   @to_root ["/session"]
 
   # init 在程序启动时运行，用以初始化产给call的参数，eg:default
@@ -10,8 +14,21 @@ defmodule GoodsManage.CheckoutToken do
     if r do
       assign(conn, :local, default)
     else
-      IO.puts "doing need token"
-      assign(conn, :local, default)
+      case Utility.get_id_by_token(get_session(conn, :token)) do
+        {:ok, uuid} ->
+          if uuid != nil do
+            account = Account.get_by_uuid(uuid)
+            assign(conn, :account, account)
+          else
+            return_to(conn, "/")
+          end
+        {:error, error} ->
+          raise error
+        _ ->
+          raise "server is not response"
+      end
+
+
     end
   end
 

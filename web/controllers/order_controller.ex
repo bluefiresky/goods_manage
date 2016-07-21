@@ -5,6 +5,8 @@ defmodule GoodsManage.OrderController do
   alias GoodsManage.ReturnView, as: Return
 
   def index(conn, _params) do
+    IO.puts "the conn on order controller -->>"
+    IO.inspect conn
     return(conn, {:index, %{}})
   end
 

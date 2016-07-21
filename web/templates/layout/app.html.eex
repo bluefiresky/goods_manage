@@ -16,6 +16,10 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
+      <% account = Dict.get(assigns, :account) %>
+      <h4  style="margin-left:20px"><%= account.account %></h4>
+      <h5  style="margin-left:20px"><%= account.uuid %></h5>
+
       <div  style="display:flex;flex-direction:row;margin-left:20px;margin-right:20px">
 
         <div  style="border:1px solid black;flex-basis:150px">
