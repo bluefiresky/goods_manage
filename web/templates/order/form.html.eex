@@ -1,101 +1,101 @@
-<%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+<div id="order_form_div">
+  <%= form_for @changeset, @action, fn f -> %>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <p>Oops, something went wrong! Please check the errors below.</p>
+      </div>
+    <% end %>
+
+    <div style="display:flex">
+      <div style="flex:1">
+        <div class="form-group">
+          <%= label f, :customer, "客户名称", class: "control-label" %>
+          <%= text_input f, :customer, class: "form-control" %>
+          <%= error_tag f, :customer %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :sales_department, "销售部门", class: "control-label" %>
+          <%= text_input f, :sales_department, class: "form-control" %>
+          <%= error_tag f, :sales_department %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :customer_address, "客户地址", class: "control-label" %>
+          <%= text_input f, :customer_address, class: "form-control" %>
+          <%= error_tag f, :customer_address %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :telephone, "住宅电话", class: "control-label" %>
+          <%= text_input f, :telephone, class: "form-control" %>
+          <%= error_tag f, :telephone %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :phone, "联系电话", class: "control-label" %>
+          <%= text_input f, :phone, class: "form-control" %>
+          <%= error_tag f, :phone %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :perchase_date, "购货日期", class: "control-label" %>
+          <%= text_input f, :perchase_date, class: "form-control" %>
+          <%= error_tag f, :perchase_date %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :customer_demand, "客户需求", class: "control-label" %>
+          <%= text_input f, :customer_demand, class: "form-control" %>
+          <%= error_tag f, :customer_demand %>
+        </div>
+
+      </div>
+
+      <div style="flex:1;margin-left:20px">
+        <div class="form-group">
+          <%= label f, :goods_name, "商品名称", class: "control-label" %>
+          <%= text_input f, :goods_name, class: "form-control" %>
+          <%= error_tag f, :goods_name %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :receive_num, "收货数量", class: "control-label" %>
+          <%= text_input f, :receive_num, class: "form-control" %>
+          <%= error_tag f, :receive_num %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :receive_date, "收获日期", class: "control-label" %>
+          <%= text_input f, :receive_date, class: "form-control" %>
+          <%= error_tag f, :receive_date %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :install_date, "安装日期", class: "control-label" %>
+          <%= text_input f, :install_date, class: "form-control" %>
+          <%= error_tag f, :install_date %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :order_no, "提货单号", class: "control-label" %>
+          <%= text_input f, :order_no, class: "form-control" %>
+          <%= error_tag f, :order_no %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :dispatching_date_local, "网点派工日期", class: "control-label" %>
+          <%= text_input f, :dispatching_date_local, class: "form-control" %>
+          <%= error_tag f, :dispatching_date_local %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :dispatching_date_service, "客服派工日期", class: "control-label" %>
+          <%= text_input f, :dispatching_date_service, class: "form-control" %>
+          <%= error_tag f, :dispatching_date_service %>
+        </div>
+
+      </div>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= label f, :customer, class: "control-label" %>
-    <%= text_input f, :customer, class: "form-control" %>
-    <%= error_tag f, :customer %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :sales_department, class: "control-label" %>
-    <%= text_input f, :sales_department, class: "form-control" %>
-    <%= error_tag f, :sales_department %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :customer_address, class: "control-label" %>
-    <%= text_input f, :customer_address, class: "form-control" %>
-    <%= error_tag f, :customer_address %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :telephone, class: "control-label" %>
-    <%= text_input f, :telephone, class: "form-control" %>
-    <%= error_tag f, :telephone %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :phone, class: "control-label" %>
-    <%= text_input f, :phone, class: "form-control" %>
-    <%= error_tag f, :phone %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :perchase_date, class: "control-label" %>
-    <%= number_input f, :perchase_date, class: "form-control" %>
-    <%= error_tag f, :perchase_date %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :customer_demand, class: "control-label" %>
-    <%= text_input f, :customer_demand, class: "form-control" %>
-    <%= error_tag f, :customer_demand %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :goods_name, class: "control-label" %>
-    <%= text_input f, :goods_name, class: "form-control" %>
-    <%= error_tag f, :goods_name %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :receive_num, class: "control-label" %>
-    <%= number_input f, :receive_num, class: "form-control" %>
-    <%= error_tag f, :receive_num %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :receive_address, class: "control-label" %>
-    <%= text_input f, :receive_address, class: "form-control" %>
-    <%= error_tag f, :receive_address %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :receive_date, class: "control-label" %>
-    <%= number_input f, :receive_date, class: "form-control" %>
-    <%= error_tag f, :receive_date %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :install_date, class: "control-label" %>
-    <%= number_input f, :install_date, class: "form-control" %>
-    <%= error_tag f, :install_date %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :order_no, class: "control-label" %>
-    <%= text_input f, :order_no, class: "form-control" %>
-    <%= error_tag f, :order_no %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :dispatching_date_local, class: "control-label" %>
-    <%= number_input f, :dispatching_date_local, class: "form-control" %>
-    <%= error_tag f, :dispatching_date_local %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :dispatching_date_service, class: "control-label" %>
-    <%= number_input f, :dispatching_date_service, class: "form-control" %>
-    <%= error_tag f, :dispatching_date_service %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>

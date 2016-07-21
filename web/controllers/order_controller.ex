@@ -5,27 +5,13 @@ defmodule GoodsManage.OrderController do
   alias GoodsManage.ReturnView, as: Return
 
   def index(conn, _params) do
-    IO.puts "the conn on order controller -->>"
-    IO.inspect conn
-    return(conn, {:index, %{}})
-  end
-
-  def new(conn, _params) do
     changeset = Order.changeset(%Order{})
-    render(conn, "new.html", changeset: changeset)
+    return(conn, {:index, %{changeset: changeset}})
   end
 
   def create(conn, %{"order" => order_params}) do
-    changeset = Order.changeset(%Order{}, order_params)
-
-    case Repo.insert(changeset) do
-      {:ok, _order} ->
-        conn
-        |> put_flash(:info, "Order created successfully.")
-        |> redirect(to: order_path(conn, :index))
-      {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
+    Order.insert(order_params)
+    text conn, "wolegequ"
   end
 
   def show(conn, %{"id" => id}) do

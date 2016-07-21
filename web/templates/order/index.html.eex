@@ -1,3 +1,13 @@
+<input id="upfile" type="file" style="margin-left:50px" />
+<br />
 <input id="import_order_excel" type="button" value="导入" style="margin-left:50px" />
+<div style="margin-left:50px" >
 
+  <%= render "form.html", changeset: @changeset, action: order_path(@conn, :create) %>
+  <div class="form-group">
+    <%= submit "保存", class: "btn btn-primary", id: "order_submit" %>
+  </div>
+</div>
+
+<script src="<%= static_path(@conn, "/js/date-utils.min.js") %>"></script>
 <script src="<%= static_path(@conn, "/js/order.js") %>"></script>

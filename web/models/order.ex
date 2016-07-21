@@ -16,6 +16,7 @@ defmodule GoodsManage.Order do
     field :order_no, :string                       #提货单号
     field :dispatching_date_local, :integer        #网点派工日期
     field :dispatching_date_service, :integer      #客服派工日期
+    field :is_installed, :boolean
 
     timestamps()
   end
@@ -27,5 +28,21 @@ defmodule GoodsManage.Order do
     struct
     |> cast(params, [:customer, :sales_department, :customer_address, :telephone, :phone, :perchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
     |> validate_required([:customer, :sales_department, :customer_address, :telephone, :phone, :perchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
+  end
+
+  def insert(order_params) do
+    IO.puts "order params -->> "
+    IO.inspect order_params
+    changeset = changeset(%GoodsManage.Order{}, order_params)
+    IO.puts "the changeset -->> "
+    IO.inspect changeset
+    # case Repo.insert(changeset) do
+    #   {:ok, _order} ->
+    #     conn
+    #     |> put_flash(:info, "Order created successfully.")
+    #     |> redirect(to: order_path(conn, :index))
+    #   {:error, changeset} ->
+    #     render(conn, "new.html", changeset: changeset)
+    # end
   end
 end

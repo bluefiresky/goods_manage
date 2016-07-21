@@ -24,8 +24,9 @@ defmodule GoodsManage.Router do
     post "/session", PageController, :session
 
     resources "/accounts", AccountController
-    
+
     get "/orders", OrderController, :index
+    post "/orders", OrderController, :create
   end
 
   # Other scopes may use custom stacks.
