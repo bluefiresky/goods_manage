@@ -8,7 +8,7 @@ defmodule GoodsManage.Repo.Migrations.CreateOrder do
       add :customer_address, :string
       add :telephone, :string
       add :phone, :string
-      add :perchase_date, :integer
+      add :purchase_date, :integer
       add :customer_demand, :string
       add :goods_name, :string
       add :receive_num, :integer

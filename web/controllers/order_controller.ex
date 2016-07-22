@@ -6,13 +6,20 @@ defmodule GoodsManage.OrderController do
 
   def index(conn, _params) do
     changeset = Order.changeset(%Order{})
-    return(conn, {:index, %{changeset: changeset}})
+    return(conn, {:index, %{changeset: changeset}}, nil)
   end
 
   def create(conn, %{"order" => order_params}) do
-    Order.insert(order_params)
-    text conn, "wolegequ"
+    case Order.insert(order_params) do
+      {:ok, _order} ->
+        changeset = Order.changeset(%Order{})
+        return(conn, {:info, "保存成功", %{changeset: changeset}}, nil)
+      {:error, error} ->
+        return(conn, {:error, error}, nil)
+    end
   end
+
+  def orders(conn, %{"offset" => o, "limit" => l})
 
   def show(conn, %{"id" => id}) do
     order = Repo.get!(Order, id)
@@ -51,14 +58,15 @@ defmodule GoodsManage.OrderController do
     |> redirect(to: order_path(conn, :index))
   end
 
-  defp return(conn, params) do
+  defp return(conn, params, template) do
+    if template == nil, do: template = "index.html"
     case params do
-      {:error, error} ->
-        Return.return(conn, "app.html", "index.html", %{}, nil, error)
-      {:info, info} ->
-        Return.return(conn, "app.html", "index.html", %{}, info, nil)
+      {:error, error, p} ->
+        Return.return(conn, "app.html", template, p, nil, error)
+      {:info, info, p} ->
+        Return.return(conn, "app.html", template, p, info, nil)
       {:index, p} ->
-        Return.return(conn, "app.html", "index.html", p, nil, nil)
+        Return.return(conn, "app.html", template, p, nil, nil)
     end
   end
 end

@@ -39,9 +39,9 @@
         </div>
 
         <div class="form-group">
-          <%= label f, :perchase_date, "购货日期", class: "control-label" %>
-          <%= text_input f, :perchase_date, class: "form-control" %>
-          <%= error_tag f, :perchase_date %>
+          <%= label f, :purchase_date, "购货日期", class: "control-label" %>
+          <%= text_input f, :purchase_date, class: "form-control" %>
+          <%= error_tag f, :purchase_date %>
         </div>
 
         <div class="form-group">
@@ -61,12 +61,12 @@
 
         <div class="form-group">
           <%= label f, :receive_num, "收货数量", class: "control-label" %>
-          <%= text_input f, :receive_num, class: "form-control" %>
+          <%= number_input f, :receive_num, class: "form-control" %>
           <%= error_tag f, :receive_num %>
         </div>
 
         <div class="form-group">
-          <%= label f, :receive_date, "收获日期", class: "control-label" %>
+          <%= label f, :receive_date, "收货日期", class: "control-label" %>
           <%= text_input f, :receive_date, class: "form-control" %>
           <%= error_tag f, :receive_date %>
         </div>

@@ -7,7 +7,7 @@ defmodule GoodsManage.Order do
     field :customer_address, :string               #客户地址
     field :telephone, :string                      #住宅电话
     field :phone, :string                          #联系电话
-    field :perchase_date, :integer                 #购货日期
+    field :purchase_date, :integer                 #购货日期
     field :customer_demand, :string                #客户需求
     field :goods_name, :string                     #商品名称
     field :receive_num, :integer                   #收货数量
@@ -26,8 +26,8 @@ defmodule GoodsManage.Order do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:customer, :sales_department, :customer_address, :telephone, :phone, :perchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
-    |> validate_required([:customer, :sales_department, :customer_address, :telephone, :phone, :perchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
+    |> cast(params, [:customer, :sales_department, :customer_address, :telephone, :phone, :purchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
+    |> validate_required([:customer, :sales_department, :customer_address, :telephone, :phone, :purchase_date, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
   end
 
   def insert(order_params) do
@@ -36,13 +36,11 @@ defmodule GoodsManage.Order do
     changeset = changeset(%GoodsManage.Order{}, order_params)
     IO.puts "the changeset -->> "
     IO.inspect changeset
-    # case Repo.insert(changeset) do
-    #   {:ok, _order} ->
-    #     conn
-    #     |> put_flash(:info, "Order created successfully.")
-    #     |> redirect(to: order_path(conn, :index))
-    #   {:error, changeset} ->
-    #     render(conn, "new.html", changeset: changeset)
-    # end
+    case Repo.insert(changeset) do
+      {:ok, _order} ->
+        {:ok, _order}
+      {:error, changeset} ->
+        {:error, "保存数据失败"}
+    end
   end
 end
