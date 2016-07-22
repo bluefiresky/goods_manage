@@ -43,4 +43,14 @@ defmodule GoodsManage.Order do
         {:error, "保存数据失败"}
     end
   end
+
+  def orders(installed, offset, limit) do
+    query = GoodsManage.Order
+      |> select([o], o)
+      |> limit([o], ^limit)
+      |> offset([o], ^offset)
+      |> order_by([o], desc: o.install_date)
+      |> where([o], o.is_installed == ^installed)
+    Repo.all(query)
+  end
 end

@@ -27,6 +27,7 @@ defmodule GoodsManage.Router do
 
     get "/orders", OrderController, :index
     post "/orders", OrderController, :create
+    get "/orders/:type", OrderController, :orders
   end
 
   # Other scopes may use custom stacks.

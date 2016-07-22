@@ -1,0 +1,46 @@
+<table class="table">
+ <thead>
+   <tr>
+     <th>客户名称</th>
+     <th>销售部门</th>
+     <th>客户地址</th>
+     <th>住宅电话</th>
+     <th>联系电话</th>
+     <th>购货日期</th>
+     <th>客户需求</th>
+     <th>商品名称</th>
+     <th>收货数量</th>
+     <th>收货日期</th>
+     <th>安装日期</th>
+     <th>提货单号</th>
+     <th>网点派工日期</th>
+     <th>客服派工日期</th>
+   </tr>
+ </thead>
+ <tbody>
+    <%= for order <- @orders do %>
+         <tr>
+          <td><%= order.customer %></td>
+          <td><%= order.sales_department %></td>
+          <td><%= order.customer_address %></td>
+          <td><%= order.telephone %></td>
+          <td><%= order.phone %></td>
+          <td><%= order.purchase_date %></td>
+          <td><%= order.customer_demand %></td>
+          <td><%= order.goods_name %></td>
+          <td><%= order.receive_num %></td>
+          <td><%= order.receive_date %></td>
+          <td><%= order.install_date %></td>
+          <td><%= order.order_no %></td>
+          <td><%= order.dispatching_date_local %></td>
+          <td><%= order.dispatching_date_service %></td>
+
+          <td class="text-right">
+            <%= link "Show", to: order_path(@conn, :index), class: "btn btn-default btn-xs" %>
+            <%= link "Edit", to: order_path(@conn, :index), class: "btn btn-default btn-xs" %>
+            <%= link "Delete", to: order_path(@conn, :index), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </td>
+        </tr>
+    <% end %>
+ </tbody>
+</table>
