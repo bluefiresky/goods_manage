@@ -1,0 +1,11 @@
+<div style="margin-left:30px">
+  <%= if @type == "list" do %>
+    <input id="order_map_show" type="button" value="地图显示">
+    <%= render "list.html", orders: @orders, conn: @conn %>
+  <% else %>
+    <input id="order_list_show" type="button" value="列表显示">
+    <%= render "map.html", orders: @orders, conn: @conn %>
+  <% end %>
+</div>
+
+<script src="<%= static_path(@conn, "/js/order.js") %>"></script>

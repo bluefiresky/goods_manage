@@ -19,6 +19,26 @@ config :goods_manage, GoodsManage.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+
+# Configure your database
+config :goods_manage, GoodsManage.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "goods_manage_dev",
+  hostname: "localhost",
+  pool_size: 10
+  
+# Cinfigure Redis
+config :exredis,
+  host: "127.0.0.1",
+  port: 6379,
+  password: "",
+  db: 0,
+  reconnect: :no_reconnect,
+  max_queue: :infinity
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

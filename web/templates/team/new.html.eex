@@ -1,0 +1,6 @@
+<div style="margin-left:30px">
+  <p id="form_error_tip"  style="color:red;margin-top:10px"></p>
+  <%= render "form.html", changeset: @changeset,
+                          action: team_path(@conn, :create) %>
+  <script src="<%= static_path(@conn, "/js/team.js") %>"></script>
+</div>

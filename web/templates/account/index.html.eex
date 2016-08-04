@@ -1,0 +1,21 @@
+<div style="margin-left:30px">
+  <% account = Dict.get(assigns, :account) %>
+  <table>
+    <tr>
+      <td>uuid:</td>
+      <td><%= account.uuid %></td>
+    </tr>
+    <tr>
+      <td>帐号:</td>
+      <td><%= account.account %></td>
+    </tr>
+    <tr>
+      <td>管理员:</td>
+      <td><%= account.is_admin %></td>
+    </tr>
+    <tr>
+      <td>是否可用:</td>
+      <td><%= account.enabled %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<div style="margin-left:30px">
+  <p id="form_error_tip"  style="color:red;margin-top:10px"></p>
+  <form id="account_modify_form" accept-charset="UTF-8" action="/account/modify" method="post">
+    <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
+    <input name="_utf8" type="hidden" value="✓">
+      <% account = Dict.get(assigns, :account) %>
+      <div class="form-group">
+        <label class="control-label" >帐号:</label><span><%= account.account %></span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="account_password">密码</label>
+        <input class="form-control" id="account_password" name="password" type="password">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="account_password_confirm">确认密码</label>
+        <input class="form-control" id="account_password_confirm" type="password">
+      </div>
+  </form>
+  <div class="form-group">
+    <%= submit "保存", class: "btn btn-primary", id: "account_modify_submit" %>
+  </div>
+</div>
+<script src="<%= static_path(@conn, "/js/account.js") %>"></script>

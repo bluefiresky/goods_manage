@@ -1,0 +1,28 @@
+<div style="margin-left:30px">
+  <input id="team_create" type="button" value="添加安装队">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>联系电话</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for team <- @teams do %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.phone %></td>
+        <td>
+          <%= link "Show", to: team_path(@conn, :index), class: "btn btn-default btn-xs" %>
+          <%= link "Edit", to: team_path(@conn, :index), class: "btn btn-default btn-xs" %>
+          <%= link "Delete", to: team_path(@conn, :index), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script src="<%= static_path(@conn, "/js/team.js") %>"></script>

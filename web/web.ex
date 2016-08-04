@@ -19,7 +19,8 @@ defmodule GoodsManage.Web do
   def model do
     quote do
       use Ecto.Schema
-
+      
+      alias GoodsManage.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query

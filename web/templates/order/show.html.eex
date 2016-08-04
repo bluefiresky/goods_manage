@@ -1,0 +1,83 @@
+<h2>Show order</h2>
+
+<ul>
+
+  <li>
+    <strong>Customer:</strong>
+    <%= @order.customer %>
+  </li>
+
+  <li>
+    <strong>Sales department:</strong>
+    <%= @order.sales_department %>
+  </li>
+
+  <li>
+    <strong>Customer address:</strong>
+    <%= @order.customer_address %>
+  </li>
+
+  <li>
+    <strong>Telephone:</strong>
+    <%= @order.telephone %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @order.phone %>
+  </li>
+
+  <li>
+    <strong>Perchase date:</strong>
+    <%= @order.perchase_date %>
+  </li>
+
+  <li>
+    <strong>Customer demand:</strong>
+    <%= @order.customer_demand %>
+  </li>
+
+  <li>
+    <strong>Goods name:</strong>
+    <%= @order.goods_name %>
+  </li>
+
+  <li>
+    <strong>Receive num:</strong>
+    <%= @order.receive_num %>
+  </li>
+
+  <li>
+    <strong>Receive address:</strong>
+    <%= @order.receive_address %>
+  </li>
+
+  <li>
+    <strong>Receive date:</strong>
+    <%= @order.receive_date %>
+  </li>
+
+  <li>
+    <strong>Install date:</strong>
+    <%= @order.install_date %>
+  </li>
+
+  <li>
+    <strong>Order no:</strong>
+    <%= @order.order_no %>
+  </li>
+
+  <li>
+    <strong>Dispatching date local:</strong>
+    <%= @order.dispatching_date_local %>
+  </li>
+
+  <li>
+    <strong>Dispatching date service:</strong>
+    <%= @order.dispatching_date_service %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: order_path(@conn, :edit, @order) %>
+<%= link "Back", to: order_path(@conn, :index) %>
