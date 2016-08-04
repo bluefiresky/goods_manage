@@ -28,4 +28,15 @@ defmodule GoodsManage.Account do
     account = Repo.get_by(GoodsManage.Account, uuid: uuid)
     %{uuid: account.uuid, account: account.account, is_admin: account.is_admin, enabled: account.enabled}
   end
+
+  def modify_password(uuid, password) do
+    account = Repo.get_by(GoodsManage.Account, uuid: uuid)
+    cs = changeset(account, %{password: :crypto.md5(password)|> Base.encode16})
+    case Repo.update(cs) do
+      {:ok, account} ->
+        {:ok, account}
+      {:error, cs} ->
+        {:ok, "保存数据失败"}
+    end
+  end
 end

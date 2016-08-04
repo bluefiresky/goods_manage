@@ -1,4 +1,4 @@
-<div style="margin-left:50px" >
+<div style="margin-left:30px" >
   <input id="upfile" type="file"/><br />
   <input id="import_order_excel" type="button" value="导入"/><br />
   <p id="form_error_tip"  style="color:red;margin-top:10px"></p>

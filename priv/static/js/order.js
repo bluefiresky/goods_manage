@@ -1,3 +1,4 @@
+// **********************For Index ***************************
 // Event
 $('#import_order_excel').click(function(){
   path = $('#upfile').val();
@@ -75,6 +76,19 @@ function check_form_data(purchase_date, receive_date, install_date, dispatching_
   }
   return tip;
 }
+
+
+// ******************************** For Order ***************************
+// Event
+$('#order_list_show').click(function(){
+  window.location.href="/orders/list?installed=false&offset=0&limit=1"
+})
+
+$('#order_map_show').click(function(){
+  window.location.href="/orders/map?installed=false&offset=0&limit=1"
+})
+
+// Function
 
 function importXLS(fileName)
 {

@@ -2,10 +2,23 @@ defmodule GoodsManage.AccountController do
   use GoodsManage.Web, :controller
 
   alias GoodsManage.Account
+  alias GoodsManage.ReturnView, as: Return
 
   def index(conn, _params) do
-    accounts = Repo.all(Account)
-    render(conn, "index.html", accounts: accounts)
+    return(conn, {:index, %{}})
+  end
+
+  def password(conn, _params) do
+    return(conn, {:password, %{}})
+  end
+
+  def modify_password(conn, %{"password" => p}) do
+    case Account.modify_password((conn.assigns[:account]).uuid, p) do
+      {:ok, account} ->
+        return(conn, {:info, "修改成功", %{}, "show.html"})
+      {:error, error} ->
+        return(conn, {:error, error, %{}, "show.html"})
+    end
   end
 
   def new(conn, _params) do
@@ -20,7 +33,7 @@ defmodule GoodsManage.AccountController do
       {:ok, _account} ->
         conn
         |> put_flash(:info, "Account created successfully.")
-        |> redirect(to: account_path(conn, :index))
+        # |> redirect(to: account_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -60,6 +73,19 @@ defmodule GoodsManage.AccountController do
 
     conn
     |> put_flash(:info, "Account deleted successfully.")
-    |> redirect(to: account_path(conn, :index))
+    # |> redirect(to: account_path(conn, :index))
+  end
+
+  defp return(conn, params) do
+    case params do
+      {:error, error, p, template} ->
+        Return.return(conn, "app.html", template, p, nil, error)
+      {:info, info, p, template} ->
+        Return.return(conn, "app.html", template, p, info, nil)
+      {:index, p} ->
+        Return.return(conn, "app.html", "index.html", p, nil, nil)
+      {:password, p} ->
+        Return.return(conn, "app.html", "show.html", p, nil, nil)
+    end
   end
 end
