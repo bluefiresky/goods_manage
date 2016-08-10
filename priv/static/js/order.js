@@ -88,7 +88,25 @@ $('#order_map_show').click(function(){
   window.location.href="/orders/map?installed=false&offset=0&limit=1"
 })
 
-// Function
+Function
+// **************** map **********************
+function initialize_map() {
+  // 百度地图API功能
+  var map = new BMap.Map("allmap");    // 创建Map实例
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+  map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+  map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+}
+
+function loadScript() {
+  var script = document.createElement("script");
+  script.src = "http://api.map.baidu.com/api?v=2.0&ak=DTV2HN4PNHzUCgUXUVEd6Cuvo5eRzsvC&callback=initialize_map";//此为v2.0版本的引用方式
+  document.body.appendChild(script);
+}
+
+window.onload = loadScript();
+// ***************** map *********************
 
 function importXLS(fileName)
 {
