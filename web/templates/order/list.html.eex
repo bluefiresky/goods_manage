@@ -15,6 +15,7 @@
      <th>提货单号</th>
      <th>网点派工日期</th>
      <th>客服派工日期</th>
+     <th>安装队</th>
    </tr>
  </thead>
  <tbody>
@@ -34,12 +35,14 @@
           <td><%= order.order_no %></td>
           <td><%= order.dispatching_date_local %></td>
           <td><%= order.dispatching_date_service %></td>
+          <td><%= order.team %></td>
 
-          <td class="text-right">
-            <%= link "Show", to: order_path(@conn, :index), class: "btn btn-default btn-xs" %>
-            <%= link "Edit", to: order_path(@conn, :index), class: "btn btn-default btn-xs" %>
-            <%= link "Delete", to: order_path(@conn, :index), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-          </td>
+          <%= if Dict.get(assigns, :installed) == "false" do %>
+            <td class="text-right">
+              <%= link "完成安装", to: order_path(@conn, :complete, order), class: "btn btn-default btn-xs" %>
+              <%= link "删除", to: order_path(@conn, :delete, order), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+            </td>
+          <% end %>
         </tr>
     <% end %>
  </tbody>

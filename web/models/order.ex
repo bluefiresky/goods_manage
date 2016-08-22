@@ -17,6 +17,7 @@ defmodule GoodsManage.Order do
     field :dispatching_date_local, :integer        #网点派工日期
     field :dispatching_date_service, :integer      #客服派工日期
     field :is_installed, :boolean
+    field :team, :string
 
     timestamps()
   end
@@ -26,7 +27,7 @@ defmodule GoodsManage.Order do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:customer, :sales_department, :customer_address, :telephone, :phone, :purchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
+    |> cast(params, [:customer, :sales_department, :customer_address, :telephone, :phone, :purchase_date, :customer_demand, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service, :is_installed, :team])
     |> validate_required([:customer, :sales_department, :customer_address, :telephone, :phone, :purchase_date, :goods_name, :receive_num, :receive_date, :install_date, :order_no, :dispatching_date_local, :dispatching_date_service])
   end
 
@@ -52,5 +53,16 @@ defmodule GoodsManage.Order do
       |> order_by([o], desc: o.install_date)
       |> where([o], o.is_installed == ^installed)
     Repo.all(query)
+  end
+
+  def complete_install(id) do
+    order = Repo.get!(GoodsManage.Order, id)
+    changeset = GoodsManage.Order.changeset(order, %{"is_installed" => "true"})
+    case Repo.update(changeset) do
+      {:ok, order} ->
+        {:ok, order}
+      {:error, changeset} ->
+        {:error, "更新数据失败"}
+    end
   end
 end

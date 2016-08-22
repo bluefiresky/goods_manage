@@ -29,6 +29,7 @@ defmodule GoodsManage.Router do
 
     get "/orders", OrderController, :index
     post "/orders", OrderController, :create
+    get "/orders/complete/:id", OrderController, :complete
     get "/orders/:type", OrderController, :orders
 
     get "/teams", TeamController, :index

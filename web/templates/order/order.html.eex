@@ -1,10 +1,10 @@
 <div style="margin-left:30px">
   <%= if @type == "list" do %>
     <input id="order_map_show" type="button" value="地图显示">
-    <%= render "list.html", orders: @orders, conn: @conn %>
+    <%= render "list.html", orders: @orders, conn: @conn, installed: @installed%>
   <% else %>
     <input id="order_list_show" type="button" value="列表显示">
-    <%= render "map.html", orders: @orders, conn: @conn %>
+    <%= render "map.html", orders: @orders, conn: @conn,  installed: @installed%>
   <% end %>
 </div>
 

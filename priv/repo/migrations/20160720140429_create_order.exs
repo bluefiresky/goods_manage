@@ -18,6 +18,7 @@ defmodule GoodsManage.Repo.Migrations.CreateOrder do
       add :dispatching_date_local, :integer
       add :dispatching_date_service, :integer
       add :is_installed, :boolean, default: false
+      add :team, :string
 
       timestamps()
     end

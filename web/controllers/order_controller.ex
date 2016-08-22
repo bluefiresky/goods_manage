@@ -21,7 +21,16 @@ defmodule GoodsManage.OrderController do
 
   def orders(conn, %{"type" => t, "installed" => i, "offset" => o, "limit" => l}) do
     orders = Order.orders(i,o,l)
-    return(conn, {:orders, %{orders: orders, type: t}})
+    return(conn, {:orders, %{orders: orders, type: t, installed: i}})
+  end
+
+  def complete(conn, %{"id" => id}) do
+    case Order.complete_install(id) do
+      {:ok, order} ->
+        return(conn, {:complete, %{}})
+      {:error, error} ->
+        text conn, error
+    end
   end
 
   def show(conn, %{"id" => id}) do
@@ -71,6 +80,8 @@ defmodule GoodsManage.OrderController do
         Return.return(conn, "app.html", "index.html", p, nil, nil)
       {:orders, p} ->
         Return.return(conn, "app.html", "order.html", p, nil, nil)
+      {:complete, p} ->
+        redirect conn, to: "/orders/list?installed=true&offset=0&limit=1"
     end
   end
 end
